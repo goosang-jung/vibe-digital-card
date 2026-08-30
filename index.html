@@ -1,77 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>김바이브 | 디지털 명함</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#17324d" />
+  <meta name="description" content="제9장 Git과 버전 관리·웹 배포 인터랙티브 교재" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>제9장 인터랙티브 교재 · Git과 버전 관리·웹 배포</title>
 </head>
 <body>
-  <main class="card-shell">
-    <header class="profile-section">
-      <div class="profile-image-wrap">
-        <img class="profile-image" src="images/profile.jpg" alt="디지털 명함 프로필 이미지">
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="icon-btn mobile-only" id="menuButton" aria-label="목차 열기">☰</button>
+      <div class="brand">
+        <div class="brand-mark">9</div>
+        <div>
+          <strong>Git · GitHub · 웹 배포</strong>
+          <span>인터랙티브 교재 v0.1</span>
+        </div>
       </div>
-
-      <div class="profile-content">
-        <p class="badge">VIBE CODING · DIGITAL CARD</p>
-        <h1 class="name">김바이브</h1>
-        <p class="role">AI 업무자동화 학습자</p>
-        <p class="introduction">
-          AI와 함께 간단한 웹 프로그램을 만들고,
-          업무와 일상에 활용하는 방법을 배우고 있습니다.
-        </p>
+      <div class="top-actions">
+        <button class="text-btn" id="fontDown" title="글자 작게">A−</button>
+        <button class="text-btn" id="fontUp" title="글자 크게">A+</button>
+        <button class="primary-btn install-btn" id="installButton" hidden>앱 설치</button>
       </div>
     </header>
 
-    <section class="info-grid">
-      <section class="contact-section">
-        <p class="section-label">CONTACT</p>
-        <h2 class="section-title">연락처</h2>
+    <aside class="sidebar" id="sidebar" aria-label="교재 목차">
+      <div class="sidebar-head">
+        <div class="progress-meta">
+          <span>학습 진행률</span>
+          <strong id="progressText">0 / 18</strong>
+        </div>
+        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+      </div>
 
-        <div class="contact-list">
-          <div class="contact-item">
-            <span class="contact-icon" aria-hidden="true">☎</span>
-            <div class="contact-text">
-              <span class="contact-label">전화</span>
-              <span class="contact-value">010-0000-0000</span>
-            </div>
-          </div>
+      <label class="search-box">
+        <span>⌕</span>
+        <input type="search" id="searchInput" placeholder="페이지 검색" autocomplete="off" />
+      </label>
 
-          <div class="contact-item">
-            <span class="contact-icon" aria-hidden="true">✉</span>
-            <div class="contact-text">
-              <span class="contact-label">이메일</span>
-              <a class="contact-value contact-link" href="mailto:hello@example.com">
-                hello@example.com
-              </a>
-            </div>
+      <nav id="toc" class="toc"></nav>
+
+      <div class="sidebar-foot">
+        <a href="https://github.com/goosang-jung/vibe-digital-card" target="_blank" rel="noreferrer">GitHub Repository ↗</a>
+        <a href="https://goosang-jung.github.io/vibe-digital-card/" target="_blank" rel="noreferrer">GitHub Pages ↗</a>
+        <a href="https://vibe-digital-card.netlify.app" target="_blank" rel="noreferrer">Netlify ↗</a>
+      </div>
+    </aside>
+
+    <main class="main" id="mainContent">
+      <section class="hero" id="homeView">
+        <div class="hero-copy">
+          <span class="eyebrow">PART 3 · 웹 프로그램 만들기와 스마트폰 활용</span>
+          <h1>제9장. Git과 버전 관리·웹 배포</h1>
+          <p>AI와 함께 만든 프로그램을 안전하게 기록하고, GitHub에 저장하고, 문제가 생기면 복구하고, 실제 인터넷 주소로 배포하는 과정을 18페이지로 학습합니다.</p>
+          <div class="hero-actions">
+            <button class="primary-btn" id="startButton">PAGE 01부터 시작</button>
+            <button class="secondary-btn" id="continueButton">이어서 보기</button>
           </div>
         </div>
-
-        <a class="email-button" href="mailto:hello@example.com"
-           aria-label="hello@example.com으로 이메일 보내기">
-          이메일 보내기
-        </a>
+        <div class="hero-card">
+          <div class="hero-stat"><strong>18</strong><span>학습 페이지</span></div>
+          <div class="hero-stat"><strong>6</strong><span>핵심 절</span></div>
+          <div class="hero-stat"><strong>3</strong><span>실제 배포 주소</span></div>
+        </div>
       </section>
 
-      <section class="qr-section">
-        <p class="section-label">QR DIGITAL CARD</p>
-        <h2 class="section-title">QR 디지털 명함</h2>
+      <section class="chapter-grid" id="chapterGrid"></section>
 
-        <div class="qr-box">
-          <img class="qr-image" src="images/qr-code.png" alt="디지털 명함 확인용 QR 코드">
+      <section class="reader hidden" id="readerView" aria-live="polite">
+        <div class="reader-head">
+          <div>
+            <span class="page-kicker" id="pageKicker"></span>
+            <h2 id="pageTitle"></h2>
+          </div>
+          <button class="complete-btn" id="completeButton">✓ 학습 완료</button>
         </div>
 
-        <p class="qr-description">
-          스마트폰으로 QR 코드를 확인해 보세요.
-        </p>
-      </section>
-    </section>
+        <div class="objective-card">
+          <span>학습목표</span>
+          <p id="pageObjective"></p>
+        </div>
 
-    <footer class="card-footer">
-      <p>AI와 함께 만드는 나의 첫 웹 프로그램</p>
-    </footer>
-  </main>
+        <article class="lesson-card">
+          <div id="pageBody" class="page-body"></div>
+          <div id="commandBox" class="command-wrap hidden"></div>
+          <div id="pageMedia" class="media-grid"></div>
+          <div id="pageLinks" class="link-grid"></div>
+          <div id="pageCallout" class="callout hidden"></div>
+          <div class="summary-card">
+            <span>핵심 정리</span>
+            <p id="pageSummary"></p>
+          </div>
+        </article>
+
+        <div class="reader-nav">
+          <button class="secondary-btn" id="prevButton">← 이전</button>
+          <button class="secondary-btn" id="homeButton">목차</button>
+          <button class="primary-btn" id="nextButton">다음 →</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
 </body>
 </html>
