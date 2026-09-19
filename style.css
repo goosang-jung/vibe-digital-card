@@ -346,3 +346,14 @@ body {
         padding: 20px 14px;
     }
 }
+
+/* 공개 주소를 좁은 화면에서도 읽을 수 있게 표시한다. */
+.public-address {
+    margin: 12px 0 0;
+    font-size: 0.85rem;
+    color: #5b6573;
+    overflow-wrap: anywhere;
+}
+.public-address a {
+    color: #2563eb;
+}
