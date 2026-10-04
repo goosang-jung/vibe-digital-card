@@ -5,70 +5,56 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>나의 디지털 명함 | 제9장 실습</title>
 <style>
-
 :root{
 color-scheme:light;
 --viewer-bg:#fff7df;
 --ink:#172b45;
---accent:#225bd6
-}
+--accent:#225bd6}
 *{
-box-sizing:border-box
-}
+box-sizing:border-box}
 body{
 margin:0;
 background:var(--viewer-bg);
 color:var(--ink);
 font-family:Arial,"Malgun Gothic",sans-serif;
-line-height:1.6
-}
+line-height:1.6}
 main{
 max-width:1050px;
 margin:40px auto;
-padding:0 24px
-}
+padding:0 24px}
 header{
-margin-bottom:26px
-}
+margin-bottom:26px}
 .eyebrow{
 font-size:13px;
 font-weight:700;
 color:var(--accent);
-letter-spacing:.08em
-}
+letter-spacing:.08em}
 h1{
 font-size:30px;
-margin:8px 0
-}
+margin:8px 0}
 h2{
 font-size:20px;
-margin:0 0 18px
-}
+margin:0 0 18px}
 p{
-margin:8px 0
-}
+margin:8px 0}
 .muted{
 color:#53647a;
-font-size:14px
-}
+font-size:14px}
 .layout{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:24px
-}
+gap:24px}
 .panel{
 background:white;
 padding:28px;
 border:1px solid #d8e0eb;
 border-radius:18px;
-box-shadow:0 8px 30px #20305008
-}
+box-shadow:0 8px 30px #20305008}
 label{
 display:block;
 font-size:14px;
 font-weight:700;
-margin:14px 0 5px
-}
+margin:14px 0 5px}
 input,textarea{
 font:inherit;
 width:100%;
@@ -76,13 +62,11 @@ padding:10px 12px;
 border:1px solid #9dacbf;
 border-radius:8px;
 background:white;
-color:var(--ink)
-}
+color:var(--ink)}
 textarea{
 font-size:12px;
 resize:vertical;
-word-break:break-all
-}
+word-break:break-all}
 button,.button{
 font:inherit;
 cursor:pointer;
@@ -94,33 +78,26 @@ color:white;
 text-decoration:none;
 display:inline-block;
 text-align:center;
-font-weight:700
-}
+font-weight:700}
 button:disabled{
 opacity:.45;
-cursor:default
-}
+cursor:default}
 .secondary{
 background:#e9effa;
-color:#234777
-}
+color:#234777}
 .actions{
 display:flex;
 flex-wrap:wrap;
 gap:8px;
-margin-top:18px
-}
+margin-top:18px}
 .actions>*{
-flex:1
-}
+flex:1}
 form>button{
 width:100%;
-margin-top:22px
-}
+margin-top:22px}
 .card{
 text-align:center;
-border-top:5px solid var(--accent)
-}
+border-top:5px solid var(--accent)}
 .avatar{
 display:grid;
 place-items:center;
@@ -130,75 +107,56 @@ background:#e9effa;
 color:var(--accent);
 border-radius:50%;
 font-size:26px;
-margin:6px auto 16px
-}
+margin:6px auto 16px}
 .card h2{
 font-size:27px;
-margin:0
-}
+margin:0}
 .contact{
-overflow-wrap:anywhere
-}
+overflow-wrap:anywhere}
 .qrbox{
 text-align:center;
 margin-top:24px;
 border-top:1px solid #e0e6ee;
-padding-top:18px
-}
+padding-top:18px}
 canvas{
 max-width:100%;
 height:auto;
-image-rendering:pixelated
-}
+image-rendering:pixelated}
 #status{
 min-height:26px;
 font-size:14px;
-color:#225035
-}
+color:#225035}
 #error{
 color:#a22222;
 background:#fff0ef;
 padding:12px;
-border-radius:8px
-}
+border-radius:8px}
 footer{
 font-size:12px;
 color:#647389;
-margin:24px 0
-}
+margin:24px 0}
 body.viewer main{
-max-width:580px
-}
+max-width:580px}
 body.viewer .layout{
-display:block
-}
+display:block}
 [hidden]{
-display:none!important
-}
+display:none!important}
 :focus-visible{
 outline:3px solid #ef9c00;
-outline-offset:3px
-}
+outline-offset:3px}
 @media(max-width:700px){
 main{
 margin:24px auto;
-padding:0 16px
-}
+padding:0 16px}
 .layout{
-grid-template-columns:1fr
-}
+grid-template-columns:1fr}
 .panel{
-padding:22px
-}
+padding:22px}
 h1{
-font-size:25px
-}
+font-size:25px}
 .actions{
-flex-direction:column
+flex-direction:column}
 }
-
-}
-
 </style>
 </head>
 <body>
@@ -265,31 +223,8 @@ flex-direction:column
 </p>
 </section>
 </div>
-<footer>제9장 제공 실습 예제 · v1.0 · 예시 정보는 실습용입니다.</footer>
-</main><!-- QR library: qrcode-generator 1.4.4
-MIT License
-
-Copyright (c) 2009 Kazuhiko Arase
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
--->
-<script>
+<footer>제9장 제공 실습 예제 · v1.0 · 예시 정보는 실습용입니다.<br>제9장 실습으로 공개한 디지털 명함</footer>
+</main><script>
 //---------------------------------------------------------------------
 //
 // QR Code Generator for JavaScript
